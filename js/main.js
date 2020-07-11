@@ -7,17 +7,30 @@ const ctx = document.querySelector('canvas').getContext('2d');
 const W = ctx.canvas.width;
 const H = ctx.canvas.height;
 
+const img = document.createElement('img')
+// let speedY = -1;
+// let x = 0;
+// let y = 0;
+
+img.src = "/images/road.png"
+
 function draw() {
   //
   // Iteration 1: road drawing
   //
+  ctx.drawImage(img, 0, 0, W, H);
+  // ctx.drawImage(img, x, H, W, H);
+
+  // y += speedY;
+  // y %= H;
+
 
   // TODO
 
   //
   // Iteration 2: car drawing
   //
-
+  car.draw();
   // TODO
 
   //
@@ -48,6 +61,7 @@ document.onkeydown = function (e) {
 
 let raf;
 let frames = 0;
+
 function animLoop() {
   frames++;
 
@@ -59,6 +73,7 @@ function animLoop() {
 }
 
 function startGame() {
+  car = new Car();
   if (raf) {
     cancelAnimationFrame(raf);
   }
@@ -68,7 +83,7 @@ function startGame() {
   animLoop();
 }
 
-document.getElementById("start-button").onclick = function() {
+document.getElementById("start-button").onclick = function () {
   startGame();
 };
 
