@@ -5,17 +5,17 @@ function random(from, to) {
 class Obstacle {
   constructor() {
 		// TODO
-		this.x = Math.random() * 250;
+		this.x = Math.floor((Math.random() * 450) + 120);
 		this.y = 0;
-		this.w = Math.random() * 250;
+		this.w = Math.random() * 350;
 		this.h = 30;
-		this.obstacleSpeed = 3;
   }
 
   draw() {
 		// TODO
-		this.ctx.fillStyle = '#482b26';
-		this.ctx.fillRect(this.x, this.y, this.w, this.h)
+		ctx.fillStyle = '#482b26';
+		ctx.fillRect(this.x, this.y, this.w, this.h);
+		ctx.stroke();
   }
 
   hits(car) {
