@@ -25,13 +25,19 @@ class Car {
 
 	moveLeft() {
 	// TODO
-	this.x -= 5;
-	console.log(this.x);
+	if(this.x <= 75){
+		this.x -= 0
+		} else {
+			this.x -= 5;
+		}
 	}
 
   moveRight() {
 		// TODO
-				this.x +=5;
-				if()
+		if(this.x >= W - 180){
+			this.x += 0
+		} else {
+			this.x +=5;
+		}
 		}
 };

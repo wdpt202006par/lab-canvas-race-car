@@ -14,36 +14,18 @@ function draw() {
   // Iteration 1: road drawing
 
   ctx.drawImage(background, 0, 0, W, H);
-  car.draw(); //tracer la voiture après la route
+	car.draw(); //tracer la voiture après la route
+	//obstacle.draw();
 
   // // Make sure the image is loaded first otherwise nothing will draw.
 
-  // const img = new Image();
-  // img.src = 'images/road.png';
-
-  //  let canvas, ctx, mainCanvas, mainCtx;
-
-  // img.onload = function() {
-  // // Create background canvas
-  // backgroundCanvas = document.getElementById('canvas');
-
-  // const backgroundImage = {
-  // 	img: img,
-  // 	x: 0,
-  // 	y:0,
-  // 	speed: -1,
-
-  // 	move: function() {
-  // 		this.y += this.speed;
-  // 		this.y %= canvas.height;
-  // 	},
-
+  
   // Iteration 2: car drawing
   // TODO
 
   // Iteration #4: obstacles
 
-  // TODO
+	// TODO
 
   // Iteration #5: collisions
   // TODO
@@ -95,8 +77,8 @@ function startGame() {
   }
 
   // TODO
-  car = new Car();
-  console.log(car);
+	car = new Car();
+	obstacles = new Obstacle();
   animLoop();
 }
 
