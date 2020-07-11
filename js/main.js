@@ -1,33 +1,62 @@
 let car;
 let obstacles;
 let gameover;
-let points;
+let points = 0;
 
 const ctx = document.querySelector('canvas').getContext('2d');
 const W = ctx.canvas.width;
 const H = ctx.canvas.height;
 
+const img = document.createElement('img')
+// let speedY = -1;
+// let x = 0;
+// let y = 0;
+
+img.src = "./images/road.png"
+
 function draw() {
   //
   // Iteration 1: road drawing
   //
+  ctx.drawImage(img, 0, 0, W, H);
+  // ctx.drawImage(img, x, H, W, H);
+
+  // y += speedY;
+  // y %= H;
+
 
   // TODO
 
   //
   // Iteration 2: car drawing
   //
-
+  car.draw();
   // TODO
 
   //
   // Iteration #4: obstacles
+  if (frames % 150 === 0) {
+    myObstacles.push(new Obstacle());
+
+  }
+
+  for (i = 0; i < myObstacles.length; i++) {
+    myObstacles[i].draw();
+    myObstacles[i].y += 5;
+  }
   //
 
   // TODO
 
   //
   // Iteration #5: collisions
+  myObstacles.forEach(function (el) {
+    if (el.hits(car)) {
+      gameover = true;
+      ctx.clearRect(0,0, W, H);
+      ctx.fillText(`Game over ! Your final score:`, 50, 150);
+    }
+  })
   //
 
   // TODO
@@ -37,21 +66,36 @@ function draw() {
   //
 
   // TODO
-
+  points++;
+  ctx.font = '42px serif';
+  ctx.fillStyle = 'black';
+  ctx.fillText(`${points}`, 50, 200);
 }
 
 document.onkeydown = function (e) {
   if (!car) return;
 
   // TODO
+  switch (e.keyCode) {
+    case 37:
+      car.moveLeft();
+      console.log('left', car);
+      break;
+    case 39:
+      car.moveRight();
+      console.log('right', car);
+      break;
+  }
 }
+
 
 let raf;
 let frames = 0;
+const myObstacles = [];
+
 function animLoop() {
   frames++;
-
-  draw();
+  draw()
 
   if (!gameover) {
     raf = requestAnimationFrame(animLoop);
@@ -59,16 +103,16 @@ function animLoop() {
 }
 
 function startGame() {
+  car = new Car();
   if (raf) {
     cancelAnimationFrame(raf);
   }
-
+  gameover = false;
   // TODO
-
   animLoop();
 }
 
-document.getElementById("start-button").onclick = function() {
+document.getElementById("start-button").onclick = function () {
   startGame();
 };
 
