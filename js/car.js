@@ -1,6 +1,6 @@
 class Car {
   constructor() {
-    const img = document.createElement("img");
+    const img = document.createElement(“img”);
     img.onload = () => {
       this.img = img;
       this.w = 100; //pas de précision de unité
@@ -9,24 +9,32 @@ class Car {
       this.h = this.w / imgRatio;
       this.y = H - this.h;
       //this.draw();
-
       // TODO
     };
-    img.src = "images/car.png";
+    img.src = “images/car.png”;
   }
-
   draw() {
-    if (!this.img) return; // if `this.img` is not loaded yet => don't draw
-
+    if (!this.img) return; // if `this.img` is not loaded yet => don’t draw
     // TODO
-    console.log("je trace ma voiture");
+    console.log(“je trace ma voiture”);
     ctx.drawImage(this.img, this.x, this.y, this.w, this.h);
-  }
+	}
 
   moveLeft() {
-    // TODO
-  }
+		// TODO
+		document.onkeydown = function(event) {
+			if (event.keycode == 37){
+				this.x--;
+				}
+			}
+		};
+
   moveRight() {
-    // TODO
-  }
-}
+		// TODO
+		document.onkeydown = function(event) {
+			if (event.keycode == 39){
+				this.x++;
+				}
+			}
+		};
+};
