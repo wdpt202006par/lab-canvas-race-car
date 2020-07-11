@@ -11,7 +11,7 @@ class Car {
       this.x = x;
       this.h = this.w/imgRatio;
       this.y = y;
-      this.draw();
+      //this.draw();
     }
     img.src = "images/car.png";
   }
@@ -23,10 +23,10 @@ class Car {
   }
 
   moveLeft() {
-    this.x--;
+    this.x -= 30;
   }
   
   moveRight() {
-    this.x++;
+    this.x +=30;
   }
 }

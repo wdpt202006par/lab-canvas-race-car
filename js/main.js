@@ -53,7 +53,15 @@ function draw() {
   // Iteration #4: obstacles
   //
 
-  // TODO
+  if (frames % 150 === 0) {
+    var obstacle = new Obstacle();
+    obstacles.push(obstacle);
+  }
+
+  obstacles.forEach((el)=> {
+    el.y += 5;
+    el.draw();
+  })
 
   //
   // Iteration #5: collisions
@@ -74,10 +82,10 @@ document.onkeydown = function (e) {
 
   switch (e.keyCode) {
     case 37: //left arrow
-      moveLeft();
+      car.moveLeft();
       break;
     case 39: //right arrow
-      moveRight();
+      car.moveRight();
       break;
   }
 }
@@ -99,10 +107,10 @@ function startGame() {
     cancelAnimationFrame(raf);
   }
   car = new Car(450, 1300);
+  obstacles = [];
   
-  
-
-  animLoop();
+  requestAnimationFrame(animLoop);
+  //animLoop();
 }
 
 document.getElementById("start-button").onclick = function() {
