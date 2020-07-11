@@ -1,7 +1,7 @@
 let car;
 let obstacles;
 let gameover;
-let points;
+let points = 0;
 
 const ctx = document.querySelector('canvas').getContext('2d');
 const W = ctx.canvas.width;
@@ -53,6 +53,8 @@ function draw() {
   myObstacles.forEach(function (el) {
     if (el.hits(car)) {
       gameover = true;
+      ctx.clearRect(0,0, W, H);
+      ctx.fillText(`Game over ! Your final score:`, 50, 150);
     }
   })
   //
@@ -64,7 +66,10 @@ function draw() {
   //
 
   // TODO
-
+  points++;
+  ctx.font = '42px serif';
+  ctx.fillStyle = 'black';
+  ctx.fillText(`${points}`, 50, 200);
 }
 
 document.onkeydown = function (e) {
@@ -90,7 +95,6 @@ const myObstacles = [];
 
 function animLoop() {
   frames++;
-
   draw()
 
   if (!gameover) {
