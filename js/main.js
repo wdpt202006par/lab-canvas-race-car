@@ -1,5 +1,5 @@
 let car;
-let obstacles;
+let obstacles = [];
 let gameover;
 let points;
 
@@ -12,24 +12,36 @@ function draw() {
   // Iteration 1: road drawing
   //
 
-  // TODO
+  const imgRoad = new Image();
+  imgRoad.src = "./images/road.png"
+  // const img = document.createElement('img')
 
+  ctx.drawImage(imgRoad, 0, 0, W, H);
+  
+  
   //
   // Iteration 2: car drawing
   //
+  car.draw()
 
-  // TODO
-
-  //
   // Iteration #4: obstacles
   //
+  if (frames % 250 === 0) {
+    const obst = new Obstacle()
+    obstacles.push(obst)
+  }
+
+  obstacles.forEach(element => {
+    element.draw();
+    element.y += 1; 
+  });
 
   // TODO
 
   //
   // Iteration #5: collisions
-  //
-
+  Obstacle1.hits(car)
+  
   // TODO
 
   //
@@ -41,8 +53,11 @@ function draw() {
 }
 
 document.onkeydown = function (e) {
-  if (!car) return;
-
+  if (!car) return; // si car est undefined STOP
+  switch (e.keyCode) {
+    case 37: car.moveLeft();  console.log('left',  car); break;
+    case 39: car.moveRight(); console.log('right', car); break;
+  }
   // TODO
 }
 
@@ -62,8 +77,10 @@ function startGame() {
   if (raf) {
     cancelAnimationFrame(raf);
   }
-
-  // TODO
+  //création de la voiture
+  car = new Car()
+  Obstacle1 = new Obstacle ()
+ 
 
   animLoop();
 }
