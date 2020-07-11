@@ -3,12 +3,14 @@ let obstacles;
 let gameover;
 let points;
 
-const ctx = document.querySelector('canvas').getContext('2d');
+const ctx = document.querySelector("canvas").getContext("2d");
 const W = ctx.canvas.width;
 const H = ctx.canvas.height;
 
 function draw() {
   //
+  let road = document.querySelector("#start-button");
+  road.onClick;
   // Iteration 1: road drawing
   //
 
@@ -37,14 +39,13 @@ function draw() {
   //
 
   // TODO
-
 }
 
 document.onkeydown = function (e) {
   if (!car) return;
 
   // TODO
-}
+};
 
 let raf;
 let frames = 0;
@@ -68,7 +69,7 @@ function startGame() {
   animLoop();
 }
 
-document.getElementById("start-button").onclick = function() {
+document.getElementById("start-button").onclick = function () {
   startGame();
 };
 
