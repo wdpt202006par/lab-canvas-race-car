@@ -10,7 +10,35 @@ const H = ctx.canvas.height;
 function draw() {
   //
   // Iteration 1: road drawing
-  //
+  // fond 
+  ctx.clearRect(0,0, W, H);
+  ctx.fillStyle = "grey"
+  ctx.fillRect(0, 0, W, H)
+
+  // bord 1
+  ctx.fillStyle = "green"
+  ctx.fillRect(0, 0 , 70, H)
+
+  // bord 2
+  ctx.fillStyle = "green"
+  ctx.fillRect(W-70, 0 , 70, H);
+
+  // ligne blanche 1 
+  ctx.fillStyle = "white"
+  ctx.fillRect(85, 0 , 20, H)
+
+  // ligne blanche 2
+  ctx.fillStyle = "white"
+  ctx.fillRect(W-105, 0 , 20, H)
+
+  // pointillé
+  ctx.beginPath();
+  ctx.lineWidth = 15;
+  ctx.setLineDash([60,60]);
+  ctx.strokeStyle = "white";
+  ctx.moveTo(500, 0);
+  ctx.lineTo(500, 1600);
+  ctx.stroke();
 
   // TODO
 
@@ -62,8 +90,7 @@ function startGame() {
   if (raf) {
     cancelAnimationFrame(raf);
   }
-
-  // TODO
+  draw();
 
   animLoop();
 }
