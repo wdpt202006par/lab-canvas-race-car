@@ -68,6 +68,10 @@ function draw() {
   //
 
   // TODO
+  obstacles.forEach((el)=> {
+    el.hits(car);
+    console.log('touched');
+  })
 
   //
   // Iteration #6: points
@@ -99,6 +103,8 @@ function animLoop() {
 
   if (!gameover) {
     raf = requestAnimationFrame(animLoop);
+  } else {
+    cancelAnimationFrame(raf);
   }
 }
 

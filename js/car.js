@@ -21,6 +21,19 @@ class Car {
     ctx.drawImage(this.img, this.x, this.y, this.w, this.h)
     // TODO
   }
+  
+  left() {
+    return this.x;
+  }
+  right() {
+    return this.x + this.w;
+  }
+  top() {
+    return this.y;
+  }
+  bottom() {
+    return this.y + this.h;
+  }
 
   moveLeft() {
     this.x -= 30;
