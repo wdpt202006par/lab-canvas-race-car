@@ -23,22 +23,15 @@ class Car {
 
   moveLeft() {
     // TODO
-    this.x -= 25;
-
-    // document.addEventListener('keydown', e => {
-    //   case 37: Car.moveLeft(); 
-    //   console.log('left',  Car); 
-    //   break;
-    // })
+    if(this.x >= 100){
+      this.x -= 25;
+    }
   }
   moveRight() {
     // TODO
-    this.x += 25;
-
-  //   document.addEventListener('keydown', e => {
-  //     case 39: Car.moveRight(); 
-  //     console.log('right',  Car); 
-  //     break;
+    if(this.x <= 800){
+      this.x += 25;
+    }
   }
 }
 
