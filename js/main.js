@@ -54,9 +54,28 @@ function draw() {
 
 document.onkeydown = function (e) {
   if (!car) return;
+	console.log(e.keyCode);
+	// TODO
+	switch(e.keyCode){
+		case 37: 
+		car.moveLeft();
+		break;
 
-  // TODO
+		case 39:
+		car.moveRight();
+		break;
+	}
 };
+// setEventListeners() {
+// 	document.onkeydown = e => {
+// 		e.keyCode === 37 ? this.car.move('left') : null;
+// 		e.keyCode === 39 ? this.car.move('right') : null
+// 	}
+// },
+
+// clearScreen() {
+// 	this.ctx.clearRect(0, 0, this.canvasSize.w, this.canvasSize.h)
+// }
 
 let raf;
 let frames = 0;
@@ -66,7 +85,7 @@ function animLoop() {
   draw();
 
   if (!gameover) {
-    raf = requestAnimationFrame(animLoop);
+    raf = requestAnimationFrame(animLoop); // 16ms
   }
 }
 

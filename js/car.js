@@ -7,7 +7,7 @@ class Car {
       this.x = W / 2 - this.w / 2;
       const imgRatio = img.naturalWidth / img.naturalHeight;
       this.h = this.w / imgRatio;
-      this.y = H - this.h;
+			this.y = H - this.h;
       //this.draw();
 
       // TODO
@@ -23,21 +23,15 @@ class Car {
     ctx.drawImage(this.img, this.x, this.y, this.w, this.h);
   }
 
-    moveLeft() {
-		// TODO
-		document.onkeydown = function(event) {
-			if (event.keycode == 37){
-				this.x--;
-				}
-			}
-		};
+	moveLeft() {
+	// TODO
+	this.x -= 5;
+	console.log(this.x);
+	}
 
   moveRight() {
 		// TODO
-		document.onkeydown = function(event) {
-			if (event.keycode == 39){
-				this.x++;
-				}
-			}
-		};
+				this.x +=5;
+				if()
+		}
 };
