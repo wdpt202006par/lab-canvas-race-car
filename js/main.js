@@ -1,6 +1,6 @@
 let car;
 let obstacles = [];
-let gameover;
+let gameover = false;
 let points;
 
 const ctx = document.querySelector('canvas').getContext('2d');
@@ -28,8 +28,8 @@ function draw() {
   obstacles.forEach(el => {
     el.y += 10;
     el.draw();
+    el.hits(car);
   })
-
 
   // Iteration #5: collisions
   //

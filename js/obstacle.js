@@ -16,7 +16,7 @@ class Obstacle {
 
   }
   bottom() {
-    return this.x + this.h;
+    return this.y + this.h;
   }
 
   right() {
@@ -28,8 +28,7 @@ class Obstacle {
   }
 
   hits(car) {
-    if (this.bottom > car.x && this.right < car.x + car.w ) return 
-      
-    )
+    if (this.bottom > car.x) return gameover = true
   }
 }
+// && this.right < car.x + car.w && this.left
