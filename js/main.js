@@ -12,7 +12,7 @@ const img = document.createElement('img')
 // let x = 0;
 // let y = 0;
 
-img.src = "/images/road.png"
+img.src = "./images/road.png"
 
 function draw() {
   //
@@ -35,6 +35,15 @@ function draw() {
 
   //
   // Iteration #4: obstacles
+  if (frames % 300 === 0) {
+    myObstacles.push(new Obstacle());
+    
+  }
+
+  for (i = 0; i < myObstacles.length; i++) {
+    myObstacles[i].draw();
+    myObstacles[i].y += 1;
+  }
   //
 
   // TODO
@@ -57,15 +66,26 @@ document.onkeydown = function (e) {
   if (!car) return;
 
   // TODO
+  switch(e.keyCode) {
+    case 37:
+      car.moveLeft();
+      console.log('left', car);
+      break;
+    case 39:
+      car.moveRight();
+      console.log('right', car);
+      break;
+  }
 }
 
+const myObstacles = [];
 let raf;
 let frames = 0;
 
 function animLoop() {
   frames++;
 
-  draw();
+  draw()
 
   if (!gameover) {
     raf = requestAnimationFrame(animLoop);
@@ -79,7 +99,6 @@ function startGame() {
   }
 
   // TODO
-
   animLoop();
 }
 

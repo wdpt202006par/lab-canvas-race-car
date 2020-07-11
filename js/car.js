@@ -4,7 +4,7 @@ class Car {
     img.onload = () => {
       this.img = img;
       this.w = 100;
-      let imgScale = img.naturalWidth / img.naturalHeight
+      let imgScale = img.naturalWidth / img.naturalHeight;
       this.h = this.w / imgScale;
       this.x = (W / 2) - (this.w / 2);
       this.y = 1300;
@@ -12,7 +12,7 @@ class Car {
       const imgRatio = img.naturalWidth / img.naturalHeight;
 
       // TODO
-    }
+    };
     img.src = "images/car.png";
   }
 
@@ -25,8 +25,10 @@ class Car {
 
   moveLeft() {
     // TODO
+    this.x -= 20;
   }
   moveRight() {
     // TODO
+    this.x += 20;
   }
 }
