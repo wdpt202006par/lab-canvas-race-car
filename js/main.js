@@ -77,7 +77,7 @@ function startGame() {
 
   // TODO
   car = new Car();
-  console.log(car)
+  console.log(car);
   animLoop();
 }
 
