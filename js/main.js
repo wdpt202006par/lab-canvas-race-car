@@ -35,14 +35,14 @@ function draw() {
 
   //
   // Iteration #4: obstacles
-  if (frames % 300 === 0) {
+  if (frames % 150 === 0) {
     myObstacles.push(new Obstacle());
-    
+
   }
 
   for (i = 0; i < myObstacles.length; i++) {
     myObstacles[i].draw();
-    myObstacles[i].y += 1;
+    myObstacles[i].y += 5;
   }
   //
 
@@ -50,6 +50,11 @@ function draw() {
 
   //
   // Iteration #5: collisions
+  myObstacles.forEach(function (el) {
+    if (el.hits(car)) {
+      gameover = true;
+    }
+  })
   //
 
   // TODO
@@ -66,7 +71,7 @@ document.onkeydown = function (e) {
   if (!car) return;
 
   // TODO
-  switch(e.keyCode) {
+  switch (e.keyCode) {
     case 37:
       car.moveLeft();
       console.log('left', car);
@@ -78,9 +83,10 @@ document.onkeydown = function (e) {
   }
 }
 
-const myObstacles = [];
+
 let raf;
 let frames = 0;
+const myObstacles = [];
 
 function animLoop() {
   frames++;
@@ -97,7 +103,7 @@ function startGame() {
   if (raf) {
     cancelAnimationFrame(raf);
   }
-
+  gameover = false;
   // TODO
   animLoop();
 }
