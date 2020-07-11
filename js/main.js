@@ -9,24 +9,26 @@ const H = ctx.canvas.height;
 
 function draw() {
   //
-  let road = document.querySelector("#start-button");
-  road.onClick;
   // Iteration 1: road drawing
   //
 
-  // TODO
+    const img = document.createElement('img');
+    img.src = 'images/road.png';
+    ctx.drawImage(img,0,0,W,H);
+  
 
   //
   // Iteration 2: car drawing
   //
-
-  // TODO
+    car.draw();
+    
 
   //
   // Iteration #4: obstacles
   //
 
-  // TODO
+    obstacles.draw();
+
 
   //
   // Iteration #5: collisions
@@ -45,6 +47,15 @@ document.onkeydown = function (e) {
   if (!car) return;
 
   // TODO
+  switch (e.keyCode) {
+    case 37:
+      car.moveLeft();
+      break;
+    case 39:
+      car.moveRight();
+      break
+  }
+  console.log(e.keyCode);
 };
 
 let raf;
@@ -64,7 +75,8 @@ function startGame() {
     cancelAnimationFrame(raf);
   }
 
-  // TODO
+  car = new Car();
+  obstacles = new Obstacle();
 
   animLoop();
 }
