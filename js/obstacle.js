@@ -38,11 +38,7 @@ class Obstacle {
       ) {
         return gameover = true;
       } 
-      /*&& this.top() < car.bottom()*/
-      /*&&
-      this.right() > car.left() && this.left() < car.right()
-      */
-    
+
 
   }
   

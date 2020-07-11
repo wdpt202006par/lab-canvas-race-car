@@ -1,7 +1,7 @@
 let car;
 let obstacles;
 let gameover;
-let points;
+let points = 0;
 
 const ctx = document.querySelector('canvas').getContext('2d');
 const W = ctx.canvas.width;
@@ -70,14 +70,21 @@ function draw() {
   // TODO
   obstacles.forEach((el)=> {
     el.hits(car);
-    console.log('touched');
+    // console.log('touched');
   })
 
   //
   // Iteration #6: points
-  //
-
   // TODO
+
+  obstacles.forEach(el=> {
+    if (el.y > H) {
+      points++;
+      console.log(points);
+    }
+  })
+
+
 
 }
 
