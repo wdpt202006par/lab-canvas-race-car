@@ -12,15 +12,19 @@ function draw() {
   // Iteration 1: road drawing
   //
 
-  // TODO
+  const imgRoad = new Image();
+  imgRoad.src = "./images/road.png"
+  // const img = document.createElement('img')
 
+  ctx.drawImage(imgRoad, 0, 0, W, H);
+  
+  
   //
   // Iteration 2: car drawing
   //
+  car.draw()
 
-  // TODO
 
-  //
   // Iteration #4: obstacles
   //
 
@@ -41,8 +45,11 @@ function draw() {
 }
 
 document.onkeydown = function (e) {
-  if (!car) return;
-
+  if (!car) return; // si car est undefined STOP
+  switch (e.keyCode) {
+    case 37: car.moveLeft();  console.log('left',  car); break;
+    case 39: car.moveRight(); console.log('right', car); break;
+  }
   // TODO
 }
 
@@ -62,7 +69,7 @@ function startGame() {
   if (raf) {
     cancelAnimationFrame(raf);
   }
-
+  car = new Car()
   // TODO
 
   animLoop();
