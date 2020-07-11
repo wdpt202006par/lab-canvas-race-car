@@ -3,41 +3,41 @@ let obstacles;
 let gameover;
 let points;
 
-const ctx = document.querySelector('canvas').getContext('2d');
+const ctx = document.querySelector("canvas").getContext("2d");
 const W = ctx.canvas.width;
 const H = ctx.canvas.height;
 
-function draw() {
-  
-	// Iteration 1: road drawing
-	const background = new Image();
-	background.src = "images/road.png";
+const background = new Image();
+background.src = "images/road.png";
 
-// Make sure the image is loaded first otherwise nothing will draw.
-background.onload= function(){
-    ctx.drawImage(background,0, 0, W, H);   
-}
+function draw() {
+  // Iteration 1: road drawing
+
+  ctx.drawImage(background, 0, 0, W, H);
+  car.draw(); //tracer la voiture après la route
+
+  // // Make sure the image is loaded first otherwise nothing will draw.
 
   // const img = new Image();
- 	// img.src = 'images/road.png';
+  // img.src = 'images/road.png';
 
-	//  let canvas, ctx, mainCanvas, mainCtx;
+  //  let canvas, ctx, mainCanvas, mainCtx;
 
-	// img.onload = function() {
+  // img.onload = function() {
   // // Create background canvas
-	// backgroundCanvas = document.getElementById('canvas');
-	
-	// const backgroundImage = {
-	// 	img: img,
-	// 	x: 0,
-	// 	y:0,
-	// 	speed: -1,
-	
-	// 	move: function() {
-	// 		this.y += this.speed;
-	// 		this.y %= canvas.height;
-	// 	},
-  
+  // backgroundCanvas = document.getElementById('canvas');
+
+  // const backgroundImage = {
+  // 	img: img,
+  // 	x: 0,
+  // 	y:0,
+  // 	speed: -1,
+
+  // 	move: function() {
+  // 		this.y += this.speed;
+  // 		this.y %= canvas.height;
+  // 	},
+
   // Iteration 2: car drawing
   // TODO
 
@@ -50,14 +50,13 @@ background.onload= function(){
 
   // Iteration #6: points
   // TODO
-
 }
 
 document.onkeydown = function (e) {
   if (!car) return;
 
   // TODO
-}
+};
 
 let raf;
 let frames = 0;
@@ -77,11 +76,12 @@ function startGame() {
   }
 
   // TODO
-
+  car = new Car();
+  console.log(car)
   animLoop();
 }
 
-document.getElementById("start-button").onclick = function() {
+document.getElementById("start-button").onclick = function () {
   startGame();
 };
 
