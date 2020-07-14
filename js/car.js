@@ -22,9 +22,9 @@ class Car {
   }
 
   moveLeft() {
-    return this.x-this.w;
+    return this.x=this.x-this.w;
   }
   moveRight() {
-    return this.x+this.w;
+    return this.x=this.x+this.w;
   }
 }

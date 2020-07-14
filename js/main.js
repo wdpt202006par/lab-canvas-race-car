@@ -21,6 +21,7 @@ function draw() {
   // Iteration 2: car drawing
   //
     car.draw();
+   
     
 
   //
@@ -28,7 +29,7 @@ function draw() {
   //
 
     obstacles.draw();
-
+   
 
   //
   // Iteration #5: collisions
@@ -62,13 +63,20 @@ let raf;
 let frames = 0;
 function animLoop() {
   frames++;
-
+  if (frames % 120 ===0) {
+   new Obstacle();
+  }
+ for (let i=0; i<obstacles.length;i++){
+  obstacles[i].y += 1;
+ }
+  obstacles.y += 1;
   draw();
 
   if (!gameover) {
     raf = requestAnimationFrame(animLoop);
   }
 }
+
 
 function startGame() {
   if (raf) {
