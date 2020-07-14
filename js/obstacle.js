@@ -15,7 +15,6 @@ class Obstacle {
     ctx.fillRect(this.x, this.y, this.w, this.h);
 
   }
-
   hits(car) {
     return (
       this.y + this.h > car.y &&

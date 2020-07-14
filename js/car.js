@@ -29,16 +29,4 @@ class Car {
     this.x += 60;
   }
 
-  // Front() {
-  //   return this.x;
-  // }
-
-  // Right() {
-  //   return this.x + this.w;
-  // }
-
-  // Left() {
-  //   return this.x;
-  // }
-
 }
