@@ -6,10 +6,10 @@ function random(from, to) {
 class Obstacle {
   constructor() {
     // TODO
-    this.w= random(200,800);
-    this.h=50;
-    this.x=random(0, 1500-this.w);
+    this.x=random(100, 700);
     this.y=0;
+    this.w= random(200,ctx.canvas.width-100-this.x);
+    this.h=50;
   }
 
   draw() {
@@ -23,11 +23,10 @@ class Obstacle {
         this.y+this.h > car.y &&
         this.y < car.y+car.h &&
         this.x+this.w > car.x &&
-        this.x < car.x+this.w
+        this.x < car.x+car.w
       ) {
         return true;
       } 
       return false;
-    
   }
 }

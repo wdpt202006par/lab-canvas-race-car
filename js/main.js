@@ -1,6 +1,6 @@
 let car;
-let obstacles;
-let gameover;
+let obstacles = [];
+let gameover=false;
 let points;
 
 const ctx = document.querySelector("canvas").getContext("2d");
@@ -28,14 +28,21 @@ function draw() {
   // Iteration #4: obstacles
   //
 
-    obstacles.draw();
+    obstacles.forEach(function (ob) {
+      ob.draw();
+    })
    
 
   //
   // Iteration #5: collisions
   //
 
-  // TODO
+  obstacles.forEach(function (ob) {
+    if (ob.hits(car)) {
+      gameover = true
+    }
+    
+  })
 
   //
   // Iteration #6: points
@@ -56,20 +63,18 @@ document.onkeydown = function (e) {
       car.moveRight();
       break
   }
-  console.log(e.keyCode);
 };
 
 let raf;
 let frames = 0;
 function animLoop() {
   frames++;
-  if (frames % 120 ===0) {
-   new Obstacle();
+  if (frames % 400 ===0) {
+   obstacles.push(new Obstacle());
   }
  for (let i=0; i<obstacles.length;i++){
-  obstacles[i].y += 1;
+  obstacles[i].y += 2;
  }
-  obstacles.y += 1;
   draw();
 
   if (!gameover) {
@@ -82,9 +87,13 @@ function startGame() {
   if (raf) {
     cancelAnimationFrame(raf);
   }
+  ctx.clearRect(0,0,W,H);
+  gameover = false;
+  obstacles = [];
 
   car = new Car();
-  obstacles = new Obstacle();
+  let obstacle = new Obstacle();
+  obstacles.push(obstacle);
 
   animLoop();
 }

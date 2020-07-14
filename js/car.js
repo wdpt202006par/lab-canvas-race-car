@@ -22,9 +22,13 @@ class Car {
   }
 
   moveLeft() {
-    return this.x=this.x-this.w;
+    if (this.x >100) {
+      this.x=this.x-this.w;
+    }
   }
   moveRight() {
-    return this.x=this.x+this.w;
+    if (this.x<800) {
+      this.x=this.x+this.w;
+    }
   }
 }
