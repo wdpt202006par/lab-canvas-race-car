@@ -15,20 +15,14 @@ class Obstacle {
     ctx.fillRect(this.x, this.y, this.w, this.h);
 
   }
-  bottom() {
-    return this.y + this.h;
-  }
-
-  right() {
-    return this.x + this.w;
-  }
-
-  left() {
-    return this.x;
-  }
 
   hits(car) {
-    if (this.bottom > car.x) return gameover = true
+    return (
+      this.y + this.h > car.y &&
+      this.y < car.y + car.h && //useless because no backward drive
+      this.x + this.w > car.x &&
+      this.x < car.x + car.w
+    );
   }
 }
 // && this.right < car.x + car.w && this.left

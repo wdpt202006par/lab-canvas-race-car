@@ -21,12 +21,12 @@ class Car {
 
   moveLeft() {
     if (this.x < 0) return;
-    this.x -= 20;
+    this.x -= 60;
   }
 
   moveRight() {
     if (this.x > 1000 - this.w) return;
-    this.x += 20;
+    this.x += 60;
   }
 
   // Front() {

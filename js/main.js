@@ -16,27 +16,23 @@ function draw() {
 
   // Iteration 1: road drawing
   ctx.drawImage(roadimg, 0, 0, 1000, 1600); // 
-  car.draw() // apres la route
 
   // Iteration 2: car drawing
+  car.draw() // apres la route
 
   // Iteration #4: obstacles
   if (frames % 80 === 0) {
     const obstacle = new Obstacle();
     obstacles.push(obstacle);
+
   }
   obstacles.forEach(el => {
     el.y += 10;
     el.draw();
-    el.hits(car);
+    if (el.hits(car)) {
+      gameover = true;
+    }
   })
-
-  // Iteration #5: collisions
-  //
-
-  // TODO
-
-  //
   // Iteration #6: points
   //
 
@@ -64,8 +60,8 @@ function animLoop() {
   frames++; // nbr de tour de boucles // rafraichissement de l'écran 
 
   draw();
-
   if (!gameover) {
+    console.log(gameover)
     raf = requestAnimationFrame(animLoop); // toutes les 16ms
   }
 }
