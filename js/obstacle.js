@@ -19,6 +19,12 @@ class Obstacle {
   }
 
   hits(car) {
-    // TODO
+		// TODO
+		return (
+			this.y + this.h > car.y && 
+			this.y < car.y + car.h &&
+			this.x + this.w > car.x &&
+			this.x < car.x + car.w
+		);
   }
 }

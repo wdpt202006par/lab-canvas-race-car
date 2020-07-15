@@ -1,7 +1,7 @@
 let car;
 let obstacles;
-let gameover;
-let points;
+let gameover = false;
+let points = 0;
 
 const ctx = document.querySelector("canvas").getContext("2d");
 const W = ctx.canvas.width;
@@ -25,33 +25,24 @@ function draw() {
 	
 	if (frames % 280 === 0) {
     myObstacles.push(new Obstacle()); 
-  }
-
-  for (i = 0; i < myObstacles.length; i++) {
-    myObstacles[i].draw();
-    myObstacles[i].y += 1;
-  }
-
-  
-
-
-  // Iteration #5: collisions
-	// TODO
+	}
 	
-	// detectColision(obs) {
-	// 	if (this.car.x < obs.x + obs.w && this.car.x + this.car.w > obs.x && this.car.y < obs.y + obs.h && this.car.h + this.car.y > obs.y) {
-	// 		return true;
-	// 	} else {
-	// 		return false;
-	// 	}
-	// }
+	myObstacles.forEach((element, index) => {
+		element.y += 10;
+		element.draw();
+		if (element.hits(car)) {
+			gameover = true;
+		}
+		if (element.y > H) {
+			points = index + 1;
+		}
+	});
 
-	// setEventListeners() {
-	// 	document.onkeydown = e => {
-	// 		e.keyCode === 37 ? this.car.moveLeft() : null;
-	// 		e.keyCode === 39 ? this.car.moveRight() : null
-	// 	}
-	// },
+	// Iteration #6: points
+	// TODO
+	ctx.font = "45px bold";
+  ctx.fillStyle = "black";
+  ctx.fillText(`Score: ${points}`, 0, 100);	
 
 	document.onkeydown = function (e) {
 		if (!car) return;
@@ -71,9 +62,6 @@ function draw() {
 	// clearScreen(){
 	// 	this.ctx.clearRect(0, 0, this.W, this.H);
 	// }
-
-// Iteration #6: points
-// TODO
 }
 
 const myObstacles = [];
@@ -86,7 +74,23 @@ function animLoop() {
 
   if (!gameover) {
     raf = requestAnimationFrame(animLoop); // 16ms
-  }
+  } else {
+		ctx.beginPath();
+		ctx.fillStyle = 'ff0000'
+		ctx.fillRect(0, 0, W, H);
+		ctx.closePath();
+		
+		ctx.beginPath();
+		ctx.font = '50px sans-serif';
+    ctx.fillStyle = '#ffffff'
+		ctx.fillText("BOOOOM, IN YOUR FACE!", 350, 700, 300);
+		ctx.closePath();
+		
+		ctx.beginPath();
+    ctx.fillStyle = 'red'
+		ctx.fillText(`Your final score: ${points}`, 300, 850)
+		ctx.closePath();
+	}
 }
 
 function startGame() {
@@ -94,10 +98,13 @@ function startGame() {
     cancelAnimationFrame(raf);
   }
 
-  // TODO
+	// TODO
+	gameover = false;
+	points = 0;
 	car = new Car();
 	obstacles = new Obstacle();
-  animLoop();
+	animLoop();
+	final();
 }
 
 document.getElementById("start-button").onclick = function () {

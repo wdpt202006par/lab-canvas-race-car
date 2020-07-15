@@ -8,7 +8,6 @@ class Car {
       const imgRatio = img.naturalWidth / img.naturalHeight;
       this.h = this.w / imgRatio;
 			this.y = H - this.h;
-      //this.draw();
 
       // TODO
     };
