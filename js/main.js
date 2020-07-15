@@ -104,7 +104,6 @@ function startGame() {
 	car = new Car();
 	obstacles = new Obstacle();
 	animLoop();
-	final();
 }
 
 document.getElementById("start-button").onclick = function () {
