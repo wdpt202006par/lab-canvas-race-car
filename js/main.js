@@ -1,7 +1,7 @@
 let car;
 let obstacles =[];
 let gameover;
-let points;
+let points= 0;
 
 const ctx = document.querySelector('canvas').getContext('2d');
 const W = ctx.canvas.width; //1000
@@ -22,16 +22,6 @@ function draw() {
 
 
   // TODO
-
-  //
-  // Iteration #4: obstacles
-  // function updateObstacles() {
-  //   let obs=new Obstacle(this.x, this.y, 'red', this.w, this.h);
-  //   obstacles.push(obs);
-  //   for (i = 0; i < obstacles.length; i++) {
-  //     obstacles[i].y += 1;
-  //     obstacles[i].draw()
-  //   }
   
   if(frames % 120 === 0){
     let obstacle = new Obstacle();
@@ -46,13 +36,22 @@ function draw() {
   //
 
   // TODO
-
+  checkGameOver();
+  if(gameover){
+    cancelAnimationFrame(raf);
+    car.oppps();
+    car.score(points)
+  }
   //
   // Iteration #6: points
   //
 
   // TODO
-
+  // 
+  if (obstacles.length>1){
+    points+= 1;
+    car.score(points)
+}
 }
 
   document.addEventListener('keydown', e => {
@@ -75,32 +74,26 @@ let frames = 0;
 function animLoop() {
   frames++;
   draw();
-
-
+  console.log(`the status of game:${gameover}`)
   if (!gameover) {
     raf = requestAnimationFrame(animLoop);
   }
 }
-
+function checkGameOver () {
+  gameover = obstacles.some(function (obstacle) {
+    return car.crashWith(obstacle);
+  });
+}
 function startGame() {
   if (raf) {
     cancelAnimationFrame(raf);
-  
+    obstacles=[]
   }
 
   car = new Car();
 
   animLoop();
 }
-
-
-
-
-
-
 document.getElementById("start-button").onclick = function() {
   startGame();
 };
-
-// auto-start
-startGame();

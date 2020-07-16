@@ -14,7 +14,18 @@ class Car {
     }
     img.src = "images/car.png";
   }
-
+  left() {
+    return this.x;
+  }
+  right() {
+    return this.x + this.w;
+  }
+  top() {
+    return this.y;
+  }
+  bottom() {
+    return this.y + this.h;
+  }
   draw() {
     if (!this.img) return; // if `this.img` is not loaded yet => don't draw
 
@@ -29,5 +40,29 @@ class Car {
   moveRight() {
     // TODO
     this.x+=10
+  }
+  crashWith(obstacle) {
+    return (
+
+      this.bottom() > obstacle.topObstacle() &&
+      this.top() < obstacle.bottomObstacle() &&
+      this.right() > obstacle.leftObstacle() &&
+      this.left() < obstacle.rightObstacle()
+    );
+  }
+  oppps() {
+    // ... your code goes here
+    const fin = document.createElement('img');
+    fin.src = "images/gameover.png";
+  
+    // TODO
+    fin.onload = () => {
+      ctx.drawImage(fin, 250, 550, 500, 400);
+    }  
+    
+  }
+  score(points) {
+    ctx.font = "50px sans-serif"
+    ctx.fillText(`SCORE:${points}`,650, 100);
   }
 }

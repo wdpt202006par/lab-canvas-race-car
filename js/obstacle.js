@@ -9,9 +9,28 @@ class Obstacle {
   constructor() {
     // TODO
     this.w = random(100, 400);
-    this.h = 10;
-    this.x = random(36, W-this.w);
+    this.h = 30;
+    this.x = random(60, W - this.w);
     this.y = 0;
+    if (this.x+ this.w>800){
+      
+        this.w -= 60
+      
+    };
+    
+
+  }
+  leftObstacle() {
+    return this.x
+  }
+  rightObstacle() {
+    return this.x + this.w;
+  }
+  topObstacle() {
+    return this.y;
+  }
+  bottomObstacle() {
+    return this.y + this.h;
   }
 
   draw() {
